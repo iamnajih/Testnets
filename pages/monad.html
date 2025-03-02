@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF5733">
+    <title>Monad</title>
+</head>
+<style>
+   /* General Page Styles */
+body {
+    background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+    color: #1F1F1F;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Container */
+.container {
+    max-width: 90%;
+    width: 800px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    animation: slideIn 1s ease-in-out;
+}
+
+/* Headings */
+h1 {
+    font-size: 30px;
+    margin: 20px 0;
+    padding-bottom: 10px;
+    font-weight: 700;
+    color: #FF4081;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 3px solid rgba(255, 64, 129, 0.7);
+    animation: bounceIn 1.2s;
+    text-shadow: 2px 2px 8px rgba(255, 64, 129, 0.4);
+}
+
+/* Links */
+a {
+    display: block;
+    text-decoration: none;
+    color: #1F1F1F;
+    font-weight: 600;
+    margin: 12px auto;
+    padding: 14px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #FF6B6B, #FFE66D);
+    transition: all 0.3s ease-in-out;
+    animation: fadeInUp 1.3s;
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.5);
+}
+
+a:hover {
+    background: linear-gradient(90deg, #FFE66D, #FF6B6B);
+    color: #FFF;
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(255, 64, 129, 0.6);
+}
+
+/* Ordered Lists */
+ol {
+    padding: 0;
+    list-style-type: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounceIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 26px;
+    }
+    a, ol li {
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    a, ol li {
+        font-size: 16px;
+        padding: 12px;
+        width: 90%;
+    }
+}
+.hidden{
+    display: none;
+}
+
+.extend-btn {
+    width: 60%;
+  position: relative;
+  background: #ff416c;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  color: white;
+  padding: 14px 35px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(255, 75, 43, 0.4);
+}
+
+.extend-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 60%);
+  transition: all 0.4s ease-in-out;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.extend-btn:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.extend-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 75, 43, 0.6);
+}
+
+.extend-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(255, 75, 43, 0.3);
+}
+
+
+</style>
+<body>
+    <section class="container">
+        <h1>Token Fauset</h1>
+        <a href="https://testnet.monad.xyz/" target="_blank" rel="noopener noreferrer">Monad</a>
+        <a href="https://testnet.monadexplorer.com/" target="_blank" rel="noopener noreferrer">Explore Monad Transactions and check wallet balance</a>
+        <a href="https://www.dusted.app/rooms/monad-testnet/native" target="_blank" rel="noopener noreferrer">Monad Game (Dusted App)</a>  
+        <a href="https://app.mozi.finance/" target="_blank" rel="noopener noreferrer">Free Monad</a>
+        <a href="https://layerhub.xyz/search?p=monad_testnet" target="_blank" rel="noopener noreferrer">Check Monad Activity</a>
+        <button type="button" id="btn" class="extend-btn">Earn MON with bridge and swap</button>
+        <div class="hidden" id="div">
+            <a href="https://cloud.google.com/application/web3/faucet/ethereum/sepolia" target="_blank" rel="noopener noreferrer">Google Sepholia Etherium</a>  
+            <a href="https://testnet.orbiter.finance/en?src_chain=11155111&tgt_chain=10143&src_token=ETH" target="_blank" rel="noopener noreferrer">Bridge (Sepholia Etherium To Monad Sepholia)</a>
+            <a href="https://monad.ambient.finance/swap/chain=0x279f&tokenA=0x836047a99e11F376522B447bffb6e3495Dd0637c&tokenB=0x0000000000000000000000000000000000000000" target="_blank" rel="noopener noreferrer">Swap (Monad Sepholia To Monad)</a>
+        </div>
+
+        <h1>NFT Minting</h1>
+        <ol>
+            <li>
+                <a href="https://testnet.lilchogstars.com/" target="_blank" rel="noopener noreferrer">Chog stars</a>
+            </li>
+            <li>
+                <a href="http://morkie.xyz/monad" target="_blank" rel="noopener noreferrer">Morkie</a>
+            </li>
+            <li>
+                <a href="https://nfts2me.com/create/edition/" target="_blank" rel="noopener noreferrer">NFTS 2 Me</a>
+            </li>
+            <li>
+                <a href="https://www.monai.gg/nft?ref-code=OHBPEX" target="_blank" rel="noopener noreferrer">Monai gg</a>
+            </li>
+        </ol>
+
+        <h1>Register App Domain</h1>
+        <a href="https://app.nad.domains/" target="_blank" rel="noopener noreferrer">Register Domain</a>
+
+        <h1>Staking projects</h1>
+        <ol>
+            <li><a href="https://stake.apr.io/" target="_blank" rel="noopener noreferrer">Stake Apr</a></li>
+            <li><a href="https://monad.nostra.finance/lend-borrow" target="_blank" rel="noopener noreferrer">Nostra</a></li>
+            <li><a href="https://alpha.izumi.finance/trade/swap" target="_blank" rel="noopener noreferrer">Alpha Izumi</a></li>
+        </ol>
+
+        <h1>Deploy Contract</h1>
+        <a href="https://owlto.finance/deploy/?chain=MonadTestnet" target="_blank" rel="noopener noreferrer">Owlto Finance</a>
+
+        <h1>AI Projects</h1>
+        <a href="https://aicraft.fun/projects/fizen??ref=38YGDAEG3O" target="_blank" rel="noopener noreferrer">Aircraft</a>
+        <a href="https://blazpay.com/" target="_blank" rel="noopener noreferrer">Blazpay</a>
+
+        <h1>Layer 3 Quest</h1>
+        <a href="https://app.layer3.xyz/campaigns/monad-ecosystem-campaign" target="_blank" rel="noopener noreferrer">App Layer</a>
+    </section>
+</body>
+<script>
+    const btn=document.getElementById("btn");
+    const div=document.getElementById("div");
+
+    btn.addEventListener("click", function() {
+        div.classList.toggle("hidden");
+    });
+
+</script>
+</html>
